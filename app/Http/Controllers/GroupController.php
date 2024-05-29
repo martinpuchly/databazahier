@@ -16,7 +16,7 @@ class GroupController extends Controller
 {
     //zoznam skupín a formulár na pridanie skupiny
     public function index(): InertiaResponse {
-        return Inertia::render('Admin/Groups/Index', [
+        return Inertia::render('Groups/Index', [
             'groups' => Group::all()
         ]);
     }
@@ -30,7 +30,7 @@ class GroupController extends Controller
 
     //upravenie skupiny 
     public function edit(Group $group): InertiaResponse{
-        return Inertia::render('Admin/Groups/Edit',[
+        return Inertia::render('Groups/Edit',[
             'group' => $group
         ]);
     }
@@ -48,7 +48,7 @@ class GroupController extends Controller
     }
 
     public function user(User $user): InertiaResponse{
-        return Inertia::render('Admin/Groups/User', [
+        return Inertia::render('Groups/User', [
             'groups' => Group::all(),
             'user' => $user,
             'user_groups' => $user->groups->pluck('id')->toArray()

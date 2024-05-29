@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('slug');
+            $table->string('logo')->nullable();
+            $table->string('place')->nullable();
+            $table->text('info')->nullable();
+            $table->boolean('is_publisher')->default(1);
+            $table->boolean('is_developer')->default(1);
             $table->timestamps();
         });
     }

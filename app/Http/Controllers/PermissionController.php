@@ -14,7 +14,7 @@ class PermissionController extends Controller
 {
     
     public function user(User $user){
-        return Inertia::render('Admin/Permissions/User',[
+        return Inertia::render('Permissions/User',[
             'user'=> $user,
             'permissions' => Permission::orderedPerm(),
             'user_permissions' => $user->permissions->pluck('id')->toArray()
@@ -28,7 +28,7 @@ class PermissionController extends Controller
 
 
     public function group(Group $group){
-        return Inertia::render('Admin/Permissions/Group',[
+        return Inertia::render('Permissions/Group',[
             'group'=> $group,
             'permissions' => Permission::orderedPerm(),
             'group_permissions' => $group->permissions->pluck('id')->toArray()

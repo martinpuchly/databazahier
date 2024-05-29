@@ -11,7 +11,7 @@ use App\Models\User;
 class UserController extends Controller
 {
     public function index(){
-        return Inertia::render('Admin/Users/Index', [
+        return Inertia::render('Users/Index', [
             'users' => User::paginate()
         ]);
     }

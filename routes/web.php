@@ -9,6 +9,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controller\CompanyController;
+
 
 Route::get('/',  [HomeController::class, 'index'])->name('');
 
@@ -44,6 +46,13 @@ Route::name('admin.')->prefix('admin')->group(function () {
     Route::get('/povolenia/skupina/{group}', [PermissionController::class, 'group'])->name('permissions.group')->can('setGroup', App\Models\Permission::class);
     Route::patch('/povolenia/skupina/{group}', [PermissionController::class, 'groupSave'])->can('setGroup', App\Models\Permission::class);
 
+
+#COMPANIES 
+    Route::get('/spolocnosti', [CompanyController::class, 'index'])->name('companies')->can('viewAny', App\Models\Company::class);
+    Route::post('/spolocnosti', [CompanyController::class, 'store'])->name('company.add')->can('create', App\Models\Company::class);
+    Route::get('/spolocnosti/upravit/{company}', [CompanyController::class, 'edit'])->name('company.edit')->can('update', App\Models\Company::class);
+    Route::patch('/spolocnosti/upravit/{company}', [CompanyController::class, 'update'])->can('update', App\Models\Company::class);
+    Route::delete('/spolocnosti/vymazat/{company}', [CompanyController::class, 'delete'])->name('company.delete')->can('delete', App\Models\Company::class);
 
 });
 

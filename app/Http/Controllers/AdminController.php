@@ -19,7 +19,7 @@ class AdminController extends Controller
         $user_permissions_keys = Auth::user()->allPermissions();
         $perms_coll = Permission::where('link_in_admin_menu', 1)->get();
 
-        return Inertia::render('Admin/Index', [
+        return Inertia::render('Admin', [
             'permission_groups'=>Permission::orderedPerm($perms_coll->whereIn('key', $user_permissions_keys)),
             'new_msg_num'=>Contact::where('status', 1)->count(),
             'unsolved_msg_num'=>Contact::where('status', 2)->count()
